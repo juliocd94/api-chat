@@ -1,0 +1,145 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/chats": {
+            "post": {
+                "tags": [
+                    "Chats"
+                ],
+                "summary": "Iniciar un chat con un usuario registrado",
+                "operationId": "135f0cf62ac7572866404acb3b3d792d",
+                "responses": {
+                    "200": {
+                        "description": "Retorna los datos de un nuevo chat)"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/perfil": {
+            "post": {
+                "tags": [
+                    "Perfiles de usuario"
+                ],
+                "summary": "Crear perfil de usuario",
+                "description": "Display a listing of the resource.\nMostramos el listado de los regitros solicitados.",
+                "operationId": "88d3e9750b7baa4f953acbc9744a13d7",
+                "responses": {
+                    "200": {
+                        "description": "Retorna los datos del perfil registrado."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/perfil/{id}": {
+            "get": {
+                "tags": [
+                    "Perfiles de usuario"
+                ],
+                "summary": "Mostar toda la información realacionada a un perfil de usuario",
+                "operationId": "0b283f3735d8343417ab322a0658e9bb",
+                "parameters": [
+                    {
+                        "name": "enterprise",
+                        "in": "path",
+                        "description": "Solo requiere el id del perfil de usuario (no es el id del usuario)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "Ejemplo con rula local": {
+                                "summary": "Perfil ID.",
+                                "value": "http://127.0.0.1:8000/api/perfils/1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna: chats, mensajes, mensajes sin leer, mensajes leidos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Todos los usuarios",
+                "operationId": "7e2f5799553ec93c9c43e2a58490d447",
+                "responses": {
+                    "200": {
+                        "description": "Retorna: Retorna todos los usuarios registrados)"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/login-user": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Inicio de sesión para usuarios registrados en el sistema",
+                "operationId": "b5fe7e9581532217700c49f41d72453e",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Correo electronico del usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "email"
+                        },
+                        "examples": {
+                            "Correo": {
+                                "summary": "Correo electronico.",
+                                "value": "ejemplo@ejemplo.com"
+                            }
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "Contraseña",
+                        "required": true,
+                        "schema": {
+                            "type": "password"
+                        },
+                        "examples": {
+                            "Contraseña": {
+                                "summary": "Contraseña.",
+                                "value": "********"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna: Inicio de sesión, y Token de acceso Sanctum (requerido para el consumo de la API)"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    }
+}
